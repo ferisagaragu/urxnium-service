@@ -1,10 +1,10 @@
 package org.urx.service.helper
 
+import graphql.GraphQLException
 import org.slf4j.LoggerFactory
 import org.urx.exception.BadRequestException
 import org.urx.exception.NotFoundException
 import org.urx.exception.UnauthenticatedException
-import org.urx.exception_graphql.GraphQLException
 import org.urx.service.enums.ServiceType
 
 class Validations {

@@ -2,6 +2,7 @@ package org.urx.exception_graphql
 
 import graphql.ErrorType
 import graphql.GraphQLError
+import graphql.GraphQLException
 import graphql.GraphqlErrorBuilder
 import graphql.schema.DataFetchingEnvironment
 
