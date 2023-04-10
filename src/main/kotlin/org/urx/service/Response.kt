@@ -16,6 +16,7 @@ import javax.imageio.ImageIO
 import jakarta.servlet.http.HttpServletResponse
 
 import org.apache.commons.io.output.ByteArrayOutputStream
+import org.springframework.core.io.FileSystemResource
 
 import org.springframework.core.io.InputStreamResource
 import org.springframework.http.HttpHeaders
@@ -113,6 +114,13 @@ class Response {
 			.contentType(MediaType.parseMediaType(mediaType))
 			.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=${fileName}")
 			.body(InputStreamResource(fileData))
+	}
+
+	fun partialContent(mediaType: String, filePath: String, fileName: String): ResponseEntity<Any> {
+		val filePathString = "$filePath${fileName}"
+		val  responseHeaders = HttpHeaders()
+		responseHeaders.add("content-type", mediaType)
+		return ResponseEntity(FileSystemResource(filePathString), responseHeaders, HttpStatus.OK)
 	}
 
 	fun qr(data: String): ResponseEntity<Any> {
